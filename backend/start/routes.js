@@ -26,12 +26,9 @@ Route.get("/", () => {
 });
 
 Route.group(() => {
-  //O método apiOnly fará com que sejam considerados apenas os métodos padrões
-  //de uma API Rest, ou seja:
-  //Index(GET)
-  //Store(POST)
-  //Show(GET)
-  //Update(PUT)
-  //Destroy(DELETE)
   Route.resource("teams", "TeamController").apiOnly();
 }).middleware("auth");
+
+Route.group(() => {
+  Route.post("invites", "InviteController.store");
+}).middleware(["auth", "team"]);
