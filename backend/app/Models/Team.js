@@ -4,6 +4,9 @@
 const Model = use("Model");
 
 class Team extends Model {
+  /**
+   * Método padrão para utilizar o Adonis Database Seeder
+   */
   static boot() {
     super.boot();
 
