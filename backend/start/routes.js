@@ -24,3 +24,14 @@ Route.post("sessions", "SessionController.store");
 Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
+
+Route.group(() => {
+  //O método apiOnly fará com que sejam considerados apenas os métodos padrões
+  //de uma API Rest, ou seja:
+  //Index(GET)
+  //Store(POST)
+  //Show(GET)
+  //Update(PUT)
+  //Destroy(DELETE)
+  Route.resource("teams", "TeamController").apiOnly();
+}).middleware("auth");
